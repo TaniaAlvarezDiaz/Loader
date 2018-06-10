@@ -21,6 +21,7 @@ Tania Álvarez Díaz ([@TaniaAlvarezDiaz](https://github.com/TaniaAlvarezDiaz))
 
 # Compile
 
+Ejecutar una base de datos relacional, en este caso será HSQLDB.
 En la carpeta del proyecto ejecutar las siguientes instrucciones dependiendo del sistema operativo.
 
 Windows:
