@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/TaniaAlvarezDiaz/Loader.svg?branch=master)](https://travis-ci.org/TaniaAlvarezDiaz/Loader)
+
 # Loader
 Módulo para cargar los datos de los agentes que podrán enviar incidencias al sistema.
 
