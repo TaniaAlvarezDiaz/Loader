@@ -44,8 +44,8 @@ public class DbTest {
 	@Test
 	public void usuarioYaExistenteEmail() throws FileNotFoundException, DocumentException, IOException {
 		ActionSingleton aS = ActionSingleton.getInstance();
-		User user1 = new User("Sensor temperatura S1", "43.36&-5.85", "francisco@gmail.com", "ST1", 3);
-		User user3 = new User("Sensor temperatura S1", "43.36&-5.85", "francisco@gmail.com", "ST1", 3);
+		User user1 = new User("Sensor temperatura S1", "43.36;-5.85", "francisco@gmail.com", "ST1", 3);
+		User user3 = new User("Sensor temperatura S1", "43.36;-5.85", "francisco@gmail.com", "ST1", 3);
 
 		aS.getAF().saveData(user1);
 		aS.getAF().saveData(user3);
