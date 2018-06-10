@@ -6,6 +6,8 @@ import parser.ReaderSingleton;
 
 /**
  * Main application
+ * 
+ * @author Tania Álvarez Díaz
  *
  */
 public class LoadUsers {
