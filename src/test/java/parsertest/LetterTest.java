@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Date;
 
 import org.junit.Test;
 
@@ -19,8 +18,7 @@ public class LetterTest {
 	@Test
 	public void creadasCorrectamente() throws FileNotFoundException, DocumentException, IOException {
 		Letter letter = new PdfLetter();
-		Date date = new Date(System.currentTimeMillis());
-		User user1 = new User("Paco", "Francisco", "francisco@gmail.com", date, "C\\Uría", "Español", "87654321P");
+		User user1 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", 1);
 		letter.createLetter(user1);
 
 		File file = new File("cartas/pdf/87654321P.pdf");
@@ -41,5 +39,5 @@ public class LetterTest {
 		assertTrue(file.exists());
 		file.delete();
 	}
-	
+
 }

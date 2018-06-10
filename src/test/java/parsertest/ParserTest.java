@@ -152,15 +152,15 @@ public class ParserTest {
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
-		List<User> aBorrar = UserFinder.findByDNI("09940449X");
+		List<User> aBorrar = UserFinder.findByIdentificador("09940449X");
 		if (!aBorrar.isEmpty())
 			Jpa.getManager().remove(aBorrar.get(0));
 
-		aBorrar = UserFinder.findByDNI("19160962F");
+		aBorrar = UserFinder.findByIdentificador("19160962F");
 		if (!aBorrar.isEmpty())
 			Jpa.getManager().remove(aBorrar.get(0));
 
-		aBorrar = UserFinder.findByDNI("90500084Y");
+		aBorrar = UserFinder.findByIdentificador("90500084Y");
 		if (!aBorrar.isEmpty())
 			Jpa.getManager().remove(aBorrar.get(0));
 

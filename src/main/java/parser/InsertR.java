@@ -19,8 +19,8 @@ public class InsertR implements Insert {
 	}
 
 	@Override
-	public List<User> findByDNI(String dni) {
-		return UserFinder.findByDNI(dni);
+	public List<User> findByIdentificador(String identificador) {
+		return UserFinder.findByIdentificador(identificador);
 	}
 
 	@Override

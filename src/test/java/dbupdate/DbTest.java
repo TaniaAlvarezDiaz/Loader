@@ -2,7 +2,6 @@ package dbupdate;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -23,11 +22,10 @@ import persistence.util.Jpa;
 public class DbTest {
 
 	@Test
-	public void usuarioYaExistenteDni() throws FileNotFoundException, DocumentException, IOException {
+	public void usuarioYaExistenteIdentificador() throws FileNotFoundException, DocumentException, IOException {
 		ActionSingleton aS = ActionSingleton.getInstance();
-		Date date = new Date(System.currentTimeMillis());
-		User user1 = new User("Paco", "Francisco", "francisco@gmail.com", date, "C\\Uría", "Español", "87654321P");
-		User user2 = new User("Paco", "Francisco", "franci@gmail.com", date, "C\\Uría", "Español", "87654321P");
+		User user1 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "ST1", 1);
+		User user2 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "ST1", 1);
 
 		aS.getAF().saveData(user1);
 		aS.getAF().saveData(user2);
@@ -36,8 +34,8 @@ public class DbTest {
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
 
-		List<User> test = UserFinder.findByDNI("87654321P");
-		assertEquals(test.get(0).getEmail(), "francisco@gmail.com");
+		List<User> test = UserFinder.findByIdentificador("ST1");
+		assertEquals(test.get(0).getEmail(), "ferpm@gmail.com");
 
 		trx.commit();
 		mapper.close();
@@ -46,9 +44,8 @@ public class DbTest {
 	@Test
 	public void usuarioYaExistenteEmail() throws FileNotFoundException, DocumentException, IOException {
 		ActionSingleton aS = ActionSingleton.getInstance();
-		Date date = new Date(System.currentTimeMillis());
-		User user1 = new User("Paco", "Francisco", "francisco@gmail.com", date, "C\\Uría", "Español", "87654321P");
-		User user3 = new User("Paco", "Francisco", "francisco@gmail.com", date, "C\\Uría", "Español", "87654353Y");
+		User user1 = new User("Sensor temperatura S1", "43.36&-5.85", "francisco@gmail.com", "ST1", 3);
+		User user3 = new User("Sensor temperatura S1", "43.36&-5.85", "francisco@gmail.com", "ST1", 3);
 
 		aS.getAF().saveData(user1);
 		aS.getAF().saveData(user3);
@@ -58,7 +55,7 @@ public class DbTest {
 		trx.begin();
 
 		List<User> test = UserFinder.findByEmail("francisco@gmail.com");
-		assertEquals(test.get(0).getDNI(), "87654321P");
+		assertEquals(test.get(0).getIdentificador(), "ST1");
 
 		trx.commit();
 		mapper.close();
@@ -70,7 +67,7 @@ public class DbTest {
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
-		List<User> aBorrar = UserFinder.findByDNI("87654321P");
+		List<User> aBorrar = UserFinder.findByIdentificador("ST1");
 		Jpa.getManager().remove(aBorrar.get(0));
 		trx.commit();
 		mapper.close();

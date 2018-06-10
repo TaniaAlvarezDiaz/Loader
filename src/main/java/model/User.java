@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,100 +19,101 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	private String apellidos;
+	private Location location;
 	private String email;
-	private Date fechaNacimiento;
-	private String direccionPostal;
-	private String nacionalidad;
-	private String dni;
-	private String username;
+	private String identificador; // Es unico y es el nombre de usuario
+	private int tipo;
 	private String password;
 
-	User() {
+	public Long getId() {
+		return id;
 	}
 
-	public User(String nombre, String apellidos, String email, Date fechaNacimiento, String direccionPostal,
-			String nacionalidad, String DNI) {
-		setNombre(nombre);
-		setApellidos(apellidos);
-		setEmail(email);
-		setFechaNacimiento(fechaNacimiento);
-		setDireccionPostal(direccionPostal);
-		setNacionalidad(nacionalidad);
-		setDNI(DNI);
-		setUsername(email);
-		generarPassword();
-	}
-
-	private void setPassword(String password) {
-		this.password = password;
-	}
-
-	private void setUsername(String username) {
-		this.username = username;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
-	private void setNombre(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public String getApellidos() {
-		return apellidos;
+	public Location getLocation() {
+		return location;
 	}
 
-	private void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	private void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public Date getFechaNacimiento() {
-		return fechaNacimiento;
+	public String getIdentificador() {
+		return identificador;
 	}
 
-	private void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+	public void setIdentificador(String identificador) {
+		this.identificador = identificador;
 	}
 
-	public String getDireccionPostal() {
-		return direccionPostal;
+	public int getTipo() {
+		return tipo;
 	}
 
-	private void setDireccionPostal(String direccionPostal) {
-		this.direccionPostal = direccionPostal;
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
 	}
 
-	public String getNacionalidad() {
-		return nacionalidad;
+	public String getPassword() {
+		return password;
 	}
 
-	private void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getDNI() {
-		return dni;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	private void setDNI(String DNI) {
-		this.dni = DNI;
+	/**
+	 * Constructor
+	 */
+	User() {
+	}
+
+	/**
+	 * Constructor
+	 * 
+	 * @param nombre
+	 * @param location
+	 * @param email
+	 * @param identificador
+	 * @param tipo
+	 */
+	public User(String nombre, String location, String email, String identificador, int tipo) {
+		setNombre(nombre);
+		setLocation(obtenerLocalizacion(location));
+		setEmail(email);
+		setIdentificador(identificador);
+		setTipo(tipo);
+		generarPassword();
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+		result = prime * result + ((identificador == null) ? 0 : identificador.hashCode());
 		return result;
 	}
 
@@ -126,21 +126,23 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (dni == null) {
-			if (other.dni != null)
+		if (identificador == null) {
+			if (other.identificador != null)
 				return false;
-		} else if (!dni.equals(other.dni))
+		} else if (!identificador.equals(other.identificador))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id =" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
-				+ ", fechaNacimiento=" + fechaNacimiento + ", direccionPostal=" + direccionPostal + ", nacionalidad="
-				+ nacionalidad + ", DNI=" + dni + "]";
+		return "User [id=" + id + ", nombre=" + nombre + ", email=" + email + ", identificador=" + identificador
+				+ ", tipo=" + tipo + ", password=" + password + "]";
 	}
 
+	/**
+	 * Método para generar una contraseña aleatoria a cada usuario
+	 */
 	private void generarPassword() {
 		StringBuffer pass = new StringBuffer();
 		int low = 65;
@@ -156,12 +158,23 @@ public class User implements Serializable {
 		setPassword(pass.toString());
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public String getPassword() {
-		return password;
+	/**
+	 * Método para obtener la localizacion del usuario a partir del string que se
+	 * pasa por parámetro
+	 * 
+	 * @param localizacion
+	 * @return localizacion del usuario
+	 */
+	private Location obtenerLocalizacion(String localizacion) {
+		if (localizacion.equals("")) {
+			Location location = new Location(0, 0);
+			location.setExist(false);
+			return location;
+		}
+		String[] trozos = localizacion.split(";");
+		double latitud = Double.parseDouble(trozos[0]);
+		double longitud = Double.parseDouble(trozos[1]);
+		return new Location(latitud, longitud);
 	}
 
 }

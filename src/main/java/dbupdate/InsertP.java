@@ -28,9 +28,9 @@ public class InsertP implements Insert {
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
 		try {
-			if (!UserFinder.findByDNI(user.getDNI()).isEmpty()) {
-				ReportWriter.getInstance().getWriteReport().log(Level.WARNING,
-						"El usuario con el dni " + user.getDNI() + " ya existe en la base de datos");
+			if (!UserFinder.findByIdentificador(user.getIdentificador()).isEmpty()) {
+				ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "El usuario con el identificador "
+						+ user.getIdentificador() + " ya existe en la base de datos");
 				trx.rollback();
 			} else if (!UserFinder.findByEmail(user.getEmail()).isEmpty()) {
 				ReportWriter.getInstance().getWriteReport().log(Level.WARNING,
@@ -58,8 +58,8 @@ public class InsertP implements Insert {
 	}
 
 	@Override
-	public List<User> findByDNI(String dni) {
-		return UserFinder.findByDNI(dni);
+	public List<User> findByIdentificador(String identificador) {
+		return UserFinder.findByIdentificador(identificador);
 	}
 
 	@Override

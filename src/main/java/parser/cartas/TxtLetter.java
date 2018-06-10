@@ -7,13 +7,13 @@ import java.io.Writer;
 
 import model.User;
 
-public class TxtLetter extends Letter{
+public class TxtLetter extends Letter {
+	
 	private Writer writer;
 
-	public void createLetter(User user) throws IOException{
-		File letter = new File("cartas/txt/" + user.getDNI() + ".txt");
+	public void createLetter(User user) throws IOException {
+		File letter = new File("cartas/txt/" + user.getIdentificador() + ".txt");
 		writer = new FileWriter(letter);
-		writer.write("Usuario: " + user.getUsername() + "\n" + "Password: "
-				+ user.getPassword());
+		writer.write("Usuario: " + user.getIdentificador() + "\n" + "Password: " + user.getPassword());
 	}
 }

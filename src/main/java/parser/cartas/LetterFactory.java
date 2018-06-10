@@ -1,8 +1,9 @@
 package parser.cartas;
 
 public class LetterFactory {
-	
-	public static Letter createLetter(String format){
+
+	public static Letter createLetter(String format) {
+		
 		if ("txt".equals(format)) {
 			return (Letter) new TxtLetter();
 		} else if ("pdf".equals(format)) {
@@ -11,6 +12,6 @@ public class LetterFactory {
 			return (Letter) new WordLetter();
 		} else {
 			return (Letter) new WordLetter();
-		}	
+		}
 	}
 }
