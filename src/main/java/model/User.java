@@ -22,7 +22,7 @@ public class User implements Serializable {
 	private Location location;
 	private String email;
 	private String identificador; // Es unico y es el nombre de usuario
-	private int tipo;
+	private String tipo;
 	private String password;
 
 	public Long getId() {
@@ -65,11 +65,11 @@ public class User implements Serializable {
 		this.identificador = identificador;
 	}
 
-	public int getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(int tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 
@@ -100,7 +100,7 @@ public class User implements Serializable {
 	 * @param identificador
 	 * @param tipo
 	 */
-	public User(String nombre, String location, String email, String identificador, int tipo) {
+	public User(String nombre, String location, String email, String identificador, String tipo) {
 		setNombre(nombre);
 		setLocation(obtenerLocalizacion(location));
 		setEmail(email);
@@ -137,7 +137,7 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", nombre=" + nombre + ", email=" + email + ", identificador=" + identificador
-				+ ", tipo=" + tipo + ", password=" + password + "]";
+				+ ", tipo=" + tipo + "]";
 	}
 
 	/**

@@ -25,7 +25,7 @@ public class ExecuterTest {
 
 		assertEquals(aS, aS2);
 
-		User user = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", 1);
+		User user = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
 
 		aS.getAF().saveData(user);
 

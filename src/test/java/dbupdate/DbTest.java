@@ -24,8 +24,8 @@ public class DbTest {
 	@Test
 	public void usuarioYaExistenteIdentificador() throws FileNotFoundException, DocumentException, IOException {
 		ActionSingleton aS = ActionSingleton.getInstance();
-		User user1 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "ST1", 1);
-		User user2 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "ST1", 1);
+		User user1 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "ST1", "Person");
+		User user2 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "ST1", "Person");
 
 		aS.getAF().saveData(user1);
 		aS.getAF().saveData(user2);
@@ -44,8 +44,8 @@ public class DbTest {
 	@Test
 	public void usuarioYaExistenteEmail() throws FileNotFoundException, DocumentException, IOException {
 		ActionSingleton aS = ActionSingleton.getInstance();
-		User user1 = new User("Sensor temperatura S1", "43.36;-5.85", "francisco@gmail.com", "ST1", 3);
-		User user3 = new User("Sensor temperatura S1", "43.36;-5.85", "francisco@gmail.com", "ST1", 3);
+		User user1 = new User("Sensor temperatura S1", "43.36;-5.85", "francisco@gmail.com", "ST1", "Sensor");
+		User user3 = new User("Sensor temperatura S1", "43.36;-5.85", "francisco@gmail.com", "ST1", "Sensor");
 
 		aS.getAF().saveData(user1);
 		aS.getAF().saveData(user3);
