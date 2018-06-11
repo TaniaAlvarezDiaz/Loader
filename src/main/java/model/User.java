@@ -11,16 +11,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Users")
 public class User implements Serializable {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
 	private Location location;
 	private String email;
+	@Column(unique = true)
 	private String identificador; // Es unico y es el nombre de usuario
 	private String tipo;
 	private String password;
