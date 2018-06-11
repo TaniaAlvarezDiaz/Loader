@@ -25,7 +25,7 @@ public class ParserTest {
 	@Test
 	public void testLoadExcelExito() throws FileNotFoundException, DocumentException {
 		RList ex = new RList();
-		ex.load("src/test/resources/test.xlsx");
+		ex.load("src/main/resources/datosACargar.xlsx");
 
 		assertEquals(ex.getAllUsers().size(), 3);
 
@@ -63,7 +63,7 @@ public class ParserTest {
 	@Test(expected = FileNotFoundException.class)
 	public void testLoadExcelFicheroNoEncontrado() throws FileNotFoundException, DocumentException {
 		RList ex = new RList();
-		ex.load("src/test/resources/fallo.xlsx");
+		ex.load("src/main/resources/fallo.xlsx");
 
 		assertEquals(ex.getAllUsers().size(), 3);
 
@@ -101,7 +101,7 @@ public class ParserTest {
 	@Test(expected = IOException.class)
 	public void testLoadExcelErrorExcel() throws IOException, DocumentException {
 		RList ex = new RList();
-		ex.load("src/test/resources/vacio.xlsx");
+		ex.load("src/main/resources/vacio.xlsx");
 
 		assertEquals(ex.getAllUsers().size(), 3);
 
@@ -140,10 +140,10 @@ public class ParserTest {
 	public void testReaderSingleton() throws DocumentException {
 		ReaderSingleton rS = ReaderSingleton.getInstance();
 		rS.loadFile("cadenaIncorrecta");
-		rS.loadFile("test.xlsx");
+		rS.loadFile("datosACargar.xlsx");
 		ReaderSingleton rS1 = ReaderSingleton.getInstance();
 		rS1.loadFile("cadenaIncorrecta");
-		rS1.loadFile("test.xlsx");
+		rS1.loadFile("datosACargar.xlsx");
 		assertEquals(rS, rS1);
 	}
 
