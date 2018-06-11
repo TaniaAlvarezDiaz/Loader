@@ -26,11 +26,9 @@ En la carpeta del proyecto ejecutar las siguientes instrucciones dependiendo del
 
 Windows:
   - mvn compile
-  - mvn package
  
 Otros:
   - /"rutamaven"/bin/mvn.cmd compile
-  - /"rutamaven"/bin/mvn.cmd package
   
 # Execute
 
