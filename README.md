@@ -26,15 +26,21 @@ En la carpeta del proyecto ejecutar las siguientes instrucciones dependiendo del
 
 Windows:
   - mvn compile
+  - mvn package
  
 Otros:
   - /"rutamaven"/bin/mvn.cmd compile
+  - /"rutamaven"/bin/mvn.cmd package
   
 # Execute
 
-Es recomendable incluir la ruta completa de los archivos:
+Es recomendable incluir la ruta completa de los archivos.
 
-  - java -jar "jar generado" "ruta del excel de carga"
+El .jar generado se encontrará dentro de la carpeta "target" del proyecto.
+
+El excel con los datos de carga se encontrará en "src/main/resources/datosACargar.xlsx"
+
+  - java -jar "ruta .jar generado" "ruta del excel de carga"
 
 # Test
 
