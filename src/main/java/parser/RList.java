@@ -138,7 +138,7 @@ public class RList implements ReadList {
 	}
 	
 	/**
-	 * Método para carar los agentes del archivo csv
+	 * Método para cargar los agentes del archivo csv
 	 */
 	private void loadAgents() {
 		BufferedReader br = null;
