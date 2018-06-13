@@ -17,7 +17,7 @@ Rubén de la Varga Cabero
 
 # Author
 
-Tania Álvarez Díaz ([TaniaAlvarezDiaz](https://github.com/TaniaAlvarezDiaz))
+Tania Álvarez Díaz ([@TaniaAlvarezDiaz](https://github.com/TaniaAlvarezDiaz))
 
 # Compile
 
