@@ -1,6 +1,11 @@
 package model;
 
-public class Location {
+import java.io.Serializable;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class Location implements Serializable {
 	private double latitude; // 0° a 90 °: Hemisferio Norte; 0° a -90°: Hemisferio Sur
 	private double longitud; // 0° a 180°: Al este del meridiano de Greenwich; 0° a -180°: Al oeste del
 								// meridiano de Greenwich
