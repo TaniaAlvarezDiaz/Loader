@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 
+//Ha de ser embebida para que no se cree tabla en la base de datos
+//Las clases que usen JPA han de ser serializables
 @Embeddable
 public class Location implements Serializable {
 	private double latitude; // 0° a 90 °: Hemisferio Norte; 0° a -90°: Hemisferio Sur
