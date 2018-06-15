@@ -147,7 +147,7 @@ public class RList implements ReadList {
 		try {
 			br = new BufferedReader(new FileReader(AGENTSFILE));
 			while (br.ready()) {
-				String[] linea = br.readLine().split(",");
+				String[] linea = br.readLine().split(";");
 				Integer key = Integer.parseInt(linea[0]);
 				String value = linea[1];
 				agents.put(key, value);
