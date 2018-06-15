@@ -1,6 +1,7 @@
 package parser.cartas;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -12,7 +13,9 @@ public class TxtLetter extends Letter {
 	private Writer writer;
 
 	public void createLetter(User user) throws IOException {
-		File letter = new File("cartas/txt/" + user.getIdentificador() + ".txt");
+		File path = new File("cartas/txt/");
+		path.mkdirs();
+		File letter = new File(path, user.getIdentificador() + ".txt");
 		writer = new FileWriter(letter);
 		writer.write("Usuario: " + user.getIdentificador() + "\n" + "Password: " + user.getPassword());
 	}

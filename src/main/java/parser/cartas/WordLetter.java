@@ -19,9 +19,9 @@ public class WordLetter extends Letter {
 
 	public void createLetter(User user) throws FileNotFoundException, DocumentException, IOException {
 		XWPFDocument documento = new XWPFDocument();
-		File folder = new File("carta/word");
-		folder.mkdir();
-		carta = new FileOutputStream("cartas/word/" + user.getIdentificador() + ".docx");
+		File path = new File("cartas/word/");
+		path.mkdir();
+		carta = new FileOutputStream(new File(path, user.getIdentificador() + ".docx"));
 		XWPFParagraph paragraph = documento.createParagraph();
 		XWPFRun run = paragraph.createRun();
 		run.setText("Usuario: " + user.getIdentificador());

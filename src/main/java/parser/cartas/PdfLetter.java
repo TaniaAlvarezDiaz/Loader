@@ -1,5 +1,6 @@
 package parser.cartas;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
@@ -17,7 +18,9 @@ public class PdfLetter extends Letter {
 	public void createLetter(User user) throws DocumentException, FileNotFoundException {
 		document = null;
 		FileOutputStream letter = null;
-		letter = new FileOutputStream("cartas/pdf/" + user.getIdentificador() + ".pdf");
+		File path = new File("cartas/pdf/");
+		path.mkdirs();
+		letter = new FileOutputStream(new File(path, user.getIdentificador() + ".pdf"));
 		document = new Document();
 		PdfWriter.getInstance(document, letter);
 		document.open();

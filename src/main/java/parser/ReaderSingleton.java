@@ -25,6 +25,7 @@ public class ReaderSingleton {
 		try {
 			loader.load(cad);
 		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 			System.err.println("No se ha encontrado el archivo excel especificado.");
 			ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "No se ha encontrado el archivo excel");
 		}
