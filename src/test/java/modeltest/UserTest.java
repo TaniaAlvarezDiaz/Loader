@@ -45,7 +45,7 @@ public class UserTest {
 
 		String password = user1.getPassword();
 		String userName = user1.getIdentificador();
-		String toString = "User [id =" + null + ", nombre=Fernando Perez Menendez, localizacion=" + " "
+		String toString = "User [id=" + null + ", nombre=Fernando Perez Menendez, localizacion=" + " "
 				+ ", email=ferpm@gmail.com" + ", identificador=87654321P, tipo=Person]";
 
 		assertEquals("Fernando Perez Menendez", user1.getNombre());

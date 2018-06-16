@@ -112,6 +112,6 @@ public class Location implements Serializable {
 	public String toString() {
 		if (!isExist())
 			return " ";
-		return latitude + " ; " + longitud;
+		return latitude + " & " + longitud;
 	}
 }

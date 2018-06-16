@@ -35,29 +35,26 @@ public class ParserTest {
 		StringBuilder st = new StringBuilder();
 
 		for (int i = 0; i < list1.size(); i++) {
-			if (i != 3)
-				st.append(list1.get(i).toString() + " ");
+			st.append(list1.get(i).toString() + " ");
 		}
-
-		assertEquals(st.toString(), "Juan Torres Pardo juan@example.com C/ Federico García Lorca 2 Español 90500084Y ");
-
+	
+		assertEquals(st.toString(), "Juan Torres Pardo  juan@example.com 90500084Y 1.0 ");
+		
 		st = new StringBuilder();
 
 		for (int i = 0; i < list2.size(); i++) {
-			if (i != 3)
-				st.append(list2.get(i).toString() + " ");
+			st.append(list2.get(i).toString() + " ");
 		}
 
-		assertEquals(st.toString(), "Luis López Fernando luis@example.com C/ Real Oviedo 2 Español 19160962F ");
+		assertEquals(st.toString(), "Sensor temperatura S1 43.36&-5.85 luis@example.com ST1Oviedo 3.0 ");
 
 		st = new StringBuilder();
 
 		for (int i = 0; i < list3.size(); i++) {
-			if (i != 3)
-				st.append(list3.get(i).toString() + " ");
+			st.append(list3.get(i).toString() + " ");
 		}
 
-		assertEquals(st.toString(), "Ana Torres Pardo ana@example.com Av. De la Constitución 8 Español 09940449X ");
+		assertEquals(st.toString(), "Universidad de Oviedo 43.24&-5.78 uniovi@example.com Q3318001I 2.0 ");
 	}
 
 	@Test(expected = FileNotFoundException.class)
@@ -76,8 +73,7 @@ public class ParserTest {
 			st.append(list1.get(i).toString() + " ");
 		}
 
-		assertEquals(st.toString(), "Juan Torres Pardo juan@example.com " + list1.get(3)
-				+ " C/ Federico García Lorca 2 Español 90500084Y ");
+		assertEquals(st.toString(), "Juan Torres Pardo  juan@example.com 90500084Y 1.0 ");
 
 		st = new StringBuilder();
 
@@ -85,8 +81,7 @@ public class ParserTest {
 			st.append(list2.get(i).toString() + " ");
 		}
 
-		assertEquals(st.toString(),
-				"Luis López Fernando luis@example.com " + list2.get(3) + " C/ Real Oviedo 2 Español 19160962F ");
+		assertEquals(st.toString(), "Sensor temperatura S1 43.36&-5.85 luis@example.com ST1Oviedo 3.0 ");
 
 		st = new StringBuilder();
 
@@ -94,28 +89,27 @@ public class ParserTest {
 			st.append(list3.get(i).toString() + " ");
 		}
 
-		assertEquals(st.toString(),
-				"Ana Torres Pardo ana@example.com " + list3.get(3) + " Av. De la Constitución 8 Español 09940449X ");
+		assertEquals(st.toString(), "Universidad de Oviedo 43.24&-5.78 uniovi@example.com Q3318001I 2.0 ");
 	}
 
 	@Test(expected = IOException.class)
 	public void testLoadExcelErrorExcel() throws IOException, DocumentException {
 		RList ex = new RList();
-		ex.load("src/main/resources/vacio.xlsx");
+		ex.load("src/test/resources/vacio.xlsx");
 
 		assertEquals(ex.getAllUsers().size(), 3);
 
 		List<XSSFCell> list1 = ex.getAllUsers().get(0);
 		List<XSSFCell> list2 = ex.getAllUsers().get(1);
 		List<XSSFCell> list3 = ex.getAllUsers().get(2);
+		
 		StringBuilder st = new StringBuilder();
-
+		
 		for (int i = 0; i < list1.size(); i++) {
 			st.append(list1.get(i).toString() + " ");
 		}
-
-		assertEquals(st.toString(),
-				"Juan Torres Pardo juan@example.com 10-oct-1985 C/ Federico García Lorca 2 Español 90500084Y ");
+		
+		assertEquals(st.toString(), "Juan Torres Pardo  juan@example.com 90500084Y 1.0 ");
 
 		st = new StringBuilder();
 
@@ -123,8 +117,7 @@ public class ParserTest {
 			st.append(list2.get(i).toString() + " ");
 		}
 
-		assertEquals(st.toString(),
-				"Luis López Fernando luis@example.com 02-mar-1970 C/ Real Oviedo 2 Español 19160962F ");
+		assertEquals(st.toString(), "Sensor temperatura S1 43.36&-5.85 luis@example.com ST1Oviedo 3.0 ");
 
 		st = new StringBuilder();
 
@@ -132,8 +125,7 @@ public class ParserTest {
 			st.append(list3.get(i).toString() + " ");
 		}
 
-		assertEquals(st.toString(),
-				"Ana Torres Pardo ana@example.com 01-ene-1960 Av. De la Constitución 8 Español 09940449X ");
+		assertEquals(st.toString(), "Universidad de Oviedo 43.24&-5.78 uniovi@example.com Q3318001I 2.0 ");
 	}
 
 	@Test
@@ -152,15 +144,15 @@ public class ParserTest {
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
-		List<User> aBorrar = UserFinder.findByIdentificador("09940449X");
+		List<User> aBorrar = UserFinder.findByIdentificador("90500084Y");
 		if (!aBorrar.isEmpty())
 			Jpa.getManager().remove(aBorrar.get(0));
 
-		aBorrar = UserFinder.findByIdentificador("19160962F");
+		aBorrar = UserFinder.findByIdentificador("ST1Oviedo");
 		if (!aBorrar.isEmpty())
 			Jpa.getManager().remove(aBorrar.get(0));
 
-		aBorrar = UserFinder.findByIdentificador("90500084Y");
+		aBorrar = UserFinder.findByIdentificador("Q3318001I");
 		if (!aBorrar.isEmpty())
 			Jpa.getManager().remove(aBorrar.get(0));
 

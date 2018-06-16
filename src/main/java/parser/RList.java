@@ -15,7 +15,6 @@ import java.util.logging.Level;
 
 import reportwriter.ReportWriter;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -83,10 +82,10 @@ public class RList implements ReadList {
 			while (rows.hasNext()) {
 				user = new ArrayList<XSSFCell>();
 				row = (XSSFRow) rows.next();
-				Iterator<Cell> cells = row.cellIterator();
-				if (i > 0) {
-					while (cells.hasNext()) {
-						cell = (XSSFCell) cells.next();
+				if (i > 0 && row.getCell(0) != null) {
+					//Son 5 columnas
+					for (int k = 0; k < 5; k++) {
+						cell = (XSSFCell) row.getCell(k, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
 						user.add(cell);
 						System.out.print(cell.toString() + " ; ");
 					}
@@ -180,9 +179,9 @@ public class RList implements ReadList {
 		if (localizacion.isEmpty() && (tipo == 1 || tipo == 2))
 			return true;
 		//Comprobamos el formato
-		if (localizacion.contains(";")) {
+		if (localizacion.contains("&")) {
 			try {
-				String[] trozos = localizacion.split(";");
+				String[] trozos = localizacion.split("&");
 				Double.parseDouble(trozos[0]);
 				Double.parseDouble(trozos[1]);
 				//Si no puede convertir a double salta excepcion
