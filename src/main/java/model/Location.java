@@ -8,6 +8,9 @@ import javax.persistence.Embeddable;
 //Las clases que usen JPA han de ser serializables
 @Embeddable
 public class Location implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
 	private double latitude; // 0° a 90 °: Hemisferio Norte; 0° a -90°: Hemisferio Sur
 	private double longitud; // 0° a 180°: Al este del meridiano de Greenwich; 0° a -180°: Al oeste del
 								// meridiano de Greenwich

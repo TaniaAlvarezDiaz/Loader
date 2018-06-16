@@ -42,7 +42,6 @@ public class UserTest {
 	@Test
 	public void testAll() {
 		User user1 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
-		;
 
 		String password = user1.getPassword();
 		String userName = user1.getIdentificador();

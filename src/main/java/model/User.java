@@ -139,7 +139,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", nombre=" + nombre + ", email=" + email + ", identificador=" + identificador
+		return "User [id=" + id + ", nombre=" + nombre + ", localizacion=" + location.toString() + ", email=" + email + ", identificador=" + identificador
 				+ ", tipo=" + tipo + "]";
 	}
 
