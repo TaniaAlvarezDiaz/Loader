@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.com/TaniaAlvarezDiaz/Loader.svg?token=ENc151Ahc3Y3oqzaSf7S&branch=master)](https://travis-ci.com/TaniaAlvarezDiaz/Loader)
-
 [![codecov](https://codecov.io/gh/TaniaAlvarezDiaz/Loader/branch/master/graph/badge.svg?token=q8lncSfYmK)](https://codecov.io/gh/TaniaAlvarezDiaz/Loader)
 
 # Loader
