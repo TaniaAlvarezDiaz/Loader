@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/TaniaAlvarezDiaz/Loader.svg?token=ENc151Ahc3Y3oqzaSf7S&branch=master)](https://travis-ci.com/TaniaAlvarezDiaz/Loader)
 [![codecov](https://codecov.io/gh/TaniaAlvarezDiaz/Loader/branch/master/graph/badge.svg?token=q8lncSfYmK)](https://codecov.io/gh/TaniaAlvarezDiaz/Loader)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac239b6f7b3d48a196806670557a6c43)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TaniaAlvarezDiaz/Loader&amp;utm_campaign=Badge_Grade)
 
 # Loader
 Módulo para cargar los datos de los agentes que podrán enviar incidencias al sistema.
