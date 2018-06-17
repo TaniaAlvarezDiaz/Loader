@@ -11,7 +11,7 @@ import javax.persistence.PersistenceException;
 
 import com.lowagie.text.DocumentException;
 
-import model.User;
+import model.Agent;
 import parser.cartas.Letter;
 import parser.cartas.PdfLetter;
 import parser.cartas.TxtLetter;
@@ -23,28 +23,28 @@ import reportwriter.ReportWriter;
 public class InsertP implements Insert {
 
 	@Override
-	public User save(User user) throws FileNotFoundException, DocumentException, IOException {
+	public Agent save(Agent agent) throws FileNotFoundException, DocumentException, IOException {
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
 		try {
-			if (!UserFinder.findByIdentificador(user.getIdentificador()).isEmpty()) {
+			if (!UserFinder.findByIdentificador(agent.getIdentificador()).isEmpty()) {
 				ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "El usuario con el identificador "
-						+ user.getIdentificador() + " ya existe en la base de datos");
+						+ agent.getIdentificador() + " ya existe en la base de datos");
 				trx.rollback();
-			} else if (!UserFinder.findByEmail(user.getEmail()).isEmpty()) {
+			} else if (!UserFinder.findByEmail(agent.getEmail()).isEmpty()) {
 				ReportWriter.getInstance().getWriteReport().log(Level.WARNING,
-						"Ya existe un usuario con el email " + user.getEmail() + " en la base de datos");
+						"Ya existe un usuario con el email " + agent.getEmail() + " en la base de datos");
 				trx.rollback();
 			} else {
-				Jpa.getManager().persist(user);
+				Jpa.getManager().persist(agent);
 				trx.commit();
 				Letter letter = new PdfLetter();
-				letter.createLetter(user);
+				letter.createLetter(agent);
 				letter = new TxtLetter();
-				letter.createLetter(user);
+				letter.createLetter(agent);
 				letter = new WordLetter();
-				letter.createLetter(user);
+				letter.createLetter(agent);
 			}
 		} catch (PersistenceException ex) {
 			ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "Error de la BBDD");
@@ -54,16 +54,16 @@ public class InsertP implements Insert {
 			if (mapper.isOpen())
 				mapper.close();
 		}
-		return user;
+		return agent;
 	}
 
 	@Override
-	public List<User> findByIdentificador(String identificador) {
+	public List<Agent> findByIdentificador(String identificador) {
 		return UserFinder.findByIdentificador(identificador);
 	}
 
 	@Override
-	public List<User> findByEmail(String email) {
+	public List<Agent> findByEmail(String email) {
 		return UserFinder.findByEmail(email);
 	}
 }

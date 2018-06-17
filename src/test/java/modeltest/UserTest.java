@@ -2,7 +2,7 @@ package modeltest;
 
 import static org.junit.Assert.*;
 
-import model.User;
+import model.Agent;
 
 import org.junit.Test;
 
@@ -10,10 +10,10 @@ public class UserTest {
 
 	@Test
 	public void testEquals() {
-		User user1 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
-		User user2 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
-		User user3 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87658321P", "Person");
-		User user4 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Sensor");
+		Agent user1 = new Agent("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
+		Agent user2 = new Agent("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
+		Agent user3 = new Agent("Fernando Perez Menendez", "", "ferpm@gmail.com", "87658321P", "Person");
+		Agent user4 = new Agent("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Sensor");
 
 		assertEquals(true, user1.equals(user2));
 		assertEquals(false, user4.equals(user3));
@@ -25,11 +25,11 @@ public class UserTest {
 
 	@Test
 	public void testHashCode() {
-		User user1 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
-		User user2 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
-		User user3 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654521P", "Person");
-		User user4 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Entity");
-		User user5 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Entity");
+		Agent user1 = new Agent("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
+		Agent user2 = new Agent("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
+		Agent user3 = new Agent("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654521P", "Person");
+		Agent user4 = new Agent("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Entity");
+		Agent user5 = new Agent("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Entity");
 		;
 
 		assertEquals(user1.hashCode(), user2.hashCode());
@@ -41,11 +41,11 @@ public class UserTest {
 
 	@Test
 	public void testAll() {
-		User user1 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
+		Agent user1 = new Agent("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
 
 		String password = user1.getPassword();
 		String userName = user1.getIdentificador();
-		String toString = "User [id=" + null + ", nombre=Fernando Perez Menendez, localizacion=" + " "
+		String toString = "Agent [id=" + null + ", nombre=Fernando Perez Menendez, localizacion=" + " "
 				+ ", email=ferpm@gmail.com" + ", identificador=87654321P, tipo=Person]";
 
 		assertEquals("Fernando Perez Menendez", user1.getNombre());

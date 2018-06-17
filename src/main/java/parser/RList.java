@@ -24,7 +24,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import com.lowagie.text.DocumentException;
 
 import executer.*;
-import model.User;
+import model.Agent;
 
 public class RList implements ReadList {
 	
@@ -50,7 +50,7 @@ public class RList implements ReadList {
 	 * Lee el fichero excel de la ruta pasada por parametro Si el fichero no esta en
 	 * formato excel, detiene la lectura y escribe en el log la causa del error. Va
 	 * leyendo linea por linea(hay un usuario en cada linea): Para cada linea crea
-	 * un objeto User y se lo pasa al metodo cargarDatos del AtionFacade. Si existe
+	 * un objeto Agent y se lo pasa al metodo cargarDatos del AtionFacade. Si existe
 	 * algun fallo de FORMATO se ignora esa linea y se pasa a la siguiente, ademas
 	 * de escribir dicho error en el log.
 	 * 
@@ -129,11 +129,11 @@ public class RList implements ReadList {
 	}
 
 	private void crearUsuarios(List<XSSFCell> list) throws FileNotFoundException, DocumentException, IOException {
-		User user = new User(list.get(0).getStringCellValue(), list.get(1).getStringCellValue(),
+		Agent agent = new Agent(list.get(0).getStringCellValue(), list.get(1).getStringCellValue(),
 				list.get(2).getStringCellValue(), list.get(3).getStringCellValue(),
 				agents.get((int) list.get(4).getNumericCellValue()));
 		InsertR insert = new InsertR();
-		insert.save(user);
+		insert.save(agent);
 	}
 	
 	/**

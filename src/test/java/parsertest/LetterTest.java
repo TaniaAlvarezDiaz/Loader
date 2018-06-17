@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.lowagie.text.DocumentException;
 
-import model.User;
+import model.Agent;
 import parser.cartas.*;
 
 public class LetterTest {
@@ -18,7 +18,7 @@ public class LetterTest {
 	@Test
 	public void creadasCorrectamente() throws FileNotFoundException, DocumentException, IOException {
 		Letter letter = new PdfLetter();
-		User user1 = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
+		Agent user1 = new Agent("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
 		letter.createLetter(user1);
 
 		File file = new File("cartas/pdf/87654321P.pdf");

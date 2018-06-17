@@ -9,22 +9,22 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
 
-import model.User;
+import model.Agent;
 
 public class PdfLetter extends Letter {
 	
 	private Document document;
 
-	public void createLetter(User user) throws DocumentException, FileNotFoundException {
+	public void createLetter(Agent agent) throws DocumentException, FileNotFoundException {
 		document = null;
 		FileOutputStream letter = null;
 		File path = new File("cartas/pdf/");
 		path.mkdirs();
-		letter = new FileOutputStream(new File(path, user.getIdentificador() + ".pdf"));
+		letter = new FileOutputStream(new File(path, agent.getIdentificador() + ".pdf"));
 		document = new Document();
 		PdfWriter.getInstance(document, letter);
 		document.open();
-		document.add(new Paragraph("Usuario: " + user.getIdentificador() + "\n Password: " + user.getPassword()));
+		document.add(new Paragraph("Usuario: " + agent.getIdentificador() + "\n Password: " + agent.getPassword()));
 		document.close();
 	}
 }

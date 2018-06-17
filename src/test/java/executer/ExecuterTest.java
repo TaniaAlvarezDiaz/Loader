@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import com.lowagie.text.DocumentException;
 
-import model.User;
+import model.Agent;
 import persistence.UserFinder;
 import persistence.util.Jpa;
 
@@ -25,17 +25,17 @@ public class ExecuterTest {
 
 		assertEquals(aS, aS2);
 
-		User user = new User("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
+		Agent agent = new Agent("Fernando Perez Menendez", "", "ferpm@gmail.com", "87654321P", "Person");
 
-		aS.getAF().saveData(user);
+		aS.getAF().saveData(agent);
 
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
 
-		User user2 = UserFinder.findByEmail("ferpm@gmail.com").get(0);
+		Agent user2 = UserFinder.findByEmail("ferpm@gmail.com").get(0);
 
-		assertEquals(user, user2);
+		assertEquals(agent, user2);
 
 		trx.commit();
 

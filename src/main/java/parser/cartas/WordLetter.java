@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import model.User;
+import model.Agent;
 
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
@@ -17,16 +17,16 @@ public class WordLetter extends Letter {
 
 	private FileOutputStream carta;
 
-	public void createLetter(User user) throws FileNotFoundException, DocumentException, IOException {
+	public void createLetter(Agent agent) throws FileNotFoundException, DocumentException, IOException {
 		XWPFDocument documento = new XWPFDocument();
 		File path = new File("cartas/word/");
 		path.mkdir();
-		carta = new FileOutputStream(new File(path, user.getIdentificador() + ".docx"));
+		carta = new FileOutputStream(new File(path, agent.getIdentificador() + ".docx"));
 		XWPFParagraph paragraph = documento.createParagraph();
 		XWPFRun run = paragraph.createRun();
-		run.setText("Usuario: " + user.getIdentificador());
+		run.setText("Usuario: " + agent.getIdentificador());
 		run.addBreak();
-		run.setText("Password: " + user.getPassword());
+		run.setText("Password: " + agent.getPassword());
 		documento.write(carta);
 		documento.close();
 		carta.close();
