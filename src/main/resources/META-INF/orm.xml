@@ -6,12 +6,12 @@
 
     <!-- Aqui van las consultas sql (Finder, en un futuro) -->
     <!-- Ejemplo consulta -->
-    <named-query name="User.findByIdentificador">
-        <query>select u from User u where u.identificador = ?1</query>
+    <named-query name="Agent.findByIdentificador">
+        <query>select u from Agent u where u.identificador = ?1</query>
     </named-query> 
 
-    <named-query name="User.findByEmail">
-        <query>select u from User u where u.email = ?1</query>
+    <named-query name="Agent.findByEmail">
+        <query>select u from Agent u where u.email = ?1</query>
     </named-query>
 
 </entity-mappings>
