@@ -169,7 +169,7 @@ public class Agent implements Serializable {
 	 * @return localizacion del usuario
 	 */
 	private Location obtenerLocalizacion(String localizacion) {
-		if (localizacion.equals("")) {
+		if (localizacion.isEmpty()) {
 			Location location = new Location(0, 0);
 			location.setExist(false);
 			return location;
